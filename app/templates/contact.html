@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span>Добавить новость</span></h2>
+          <div class="clr"></div>
+          <p>Здесь можете добавлять самые последние свежие новости.</p>
+        </div>
+
+        <div class="article">
+          <h2><span>Заполните</span> поля</h2>
+          <div class="clr"></div>
+          <form action=" " method="post"  enctype="multipart/form-data">
+            <ol>
+              <li>
+                <label for="name"></label>
+                {{ form.title }}
+                {% csrf_token %}
+              </li>
+              <br>
+              <li>
+                {{ form.category}}
+              </li>
+              <br>
+              <li>
+                {{ form.owner }}
+              </li>
+              <br>
+              <li>
+                <label for="message"></label>
+                {{ form.description}}
+              </li>
+              <br>
+              <li>
+                {{ form.image }}
+              </li>
+              <br>
+              <li>
+                <input type="image" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" />
+                <div class="clr"></div>
+              </li>
+              <br>
+            </ol>
+          </form>
+        </div>
+      </div>
+</div>
+    </div>
+   {% endblock %}

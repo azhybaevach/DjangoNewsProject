@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        {% for i in news %}
+        <div class="article">
+
+          <h2> <a href="/news/{{ i.id }}"><span> {{ i.title }}</span> </a>  </h2>
+          <div class="clr"></div>
+          <p><span class="date">{{ i.created_date }}</span> Источник <a href="https://akipress.org/">{{ i.owner }}</a> &nbsp;| Категория <a href="#"> {{ i.category }}</a> </p>
+          <img src="{{ i.image.url }}" width="550"  alt="" />
+          <p> {{ i.description|truncatechars:150 }}</p>
+          <p class="spec"><a href="/news/{{ i.id }}" class="rm">Подробнее &raquo;</a> <a href="/news/{{ i.id }}" class="com"><span></span> Комментарии </a></p>
+        </div>
+        {% endfor %}
+        <p class="pages"><small>Page 1 of 2 &nbsp;&nbsp;&nbsp;</small> <span>1</span> <a href="#">2</a> <a href="#">&raquo;</a></p>
+      </div>
+
+  {% endblock %}

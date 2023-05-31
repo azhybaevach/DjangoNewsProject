@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span> {{ news.title }}</span> </h2>
+          <div class="clr"></div>
+          <p> Источник <a href="#" target="_blank">{{ news.owner }}</a> <span>&nbsp;&bull;&nbsp;</span> Категория <a href="/category/{{ i.id }}">{{ news.category }}</a> <a href="#"></a></p>&nbsp;
+          <img src="{{ news.image.url }}" width="525" height="305" alt="" />
+          <p> {{ news.description }} </p>
+          <p>{{ news.created_date }}</p>
+        </div>
+
+<!--        ###comments#####-->
+        <div class="article">
+          <h2><span> Комментарии </span> </h2>
+          <div class="clr"></div>.
+          {% for comment in news.comments.all %}
+          <div class="comment"> </a>
+            <p><a href="#">{{ comment.name }}</a> <br />
+              {{ comment.created_date }} </p>
+            <p> {{ comment.content }}</p>
+          </div>
+          {% endfor %}
+        </div>
+<!--         #####Формочки########&ndash;&gt;-->
+
+        <div class="article">
+          <h2><span>Оставьте</span> комментарии</h2>
+          <div class="clr"></div>
+
+
+          <form  method="post" action=" " id="leavereply">
+            <ol>
+              <li>
+                <label for="name"></label>
+                {{form.name}}
+                {% csrf_token %}}
+              </li>
+              <li>
+                <label for="email"></label>
+                {{ form.email }}
+              </li>
+
+              <li>
+                <label for="message"></label>
+                {{ form.content }}
+              </li>
+              <li>
+                <input type="image" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" />
+                <div class="clr"></div>
+              </li>
+              <br>
+            </ol>
+          </form>
+        </div>
+      </div>
+
+ {% endblock %}
